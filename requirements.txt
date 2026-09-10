@@ -1,0 +1,31 @@
+# LLM API (Gemini): 記事生成・クエリ生成・回答生成・指標の判定に使う
+# 埋め込みは手元のモデルで行うので、ここには含まれない
+google-genai==2.22.0
+
+# LLM に JSON で返させるための型定義（構造化出力）
+# google-genai の依存としても入るが、直接 import しているので明示する
+pydantic==2.13.5
+
+# 検索 API: 疑似ウェブの元になるページ本文を取得する
+tavily-python==0.8.1
+
+# .env から API キーを読み込む
+python-dotenv==1.2.3
+
+# ベクトル検索（コサイン類似度）の計算に使う
+numpy==2.5.2
+
+# 埋め込みモデル（cl-nagoya/ruri-v3-30m）を手元で動かすために使う。
+# 初回の実行時に Hugging Face からモデル（約 130MB）を取得する。
+sentence-transformers==6.0.1
+
+# sentence-transformers が必要とする。
+# CPU 版を明示している。既定のまま入れると CUDA 込みになり、
+# GPU を使わないのにライブラリだけで数 GB を消費する。
+#
+# 導入:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch==2.14.0+cpu
+
+# フロントエンド（画面）
+streamlit==1.63.0
